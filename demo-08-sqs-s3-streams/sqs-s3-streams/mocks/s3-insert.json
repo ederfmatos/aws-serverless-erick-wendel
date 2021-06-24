@@ -1,0 +1,38 @@
+{
+  "Records": [
+    {
+      "eventVersion": "2.1",
+      "eventSource": "aws:s3",
+      "awsRegion": "us-east-1",
+      "eventTime": "2021-06-23T21:28:41.011Z",
+      "eventName": "ObjectCreated:Put",
+      "userIdentity": {
+        "principalId": "AWS:AIDASKOCGR5CRNUDFWXXB"
+      },
+      "requestParameters": {
+        "sourceIPAddress": "177.200.75.227"
+      },
+      "responseElements": {
+        "x-amz-request-id": "MWW4GQ6VYHQ65SH1",
+        "x-amz-id-2": "1ylHcLXbDzfELVZKmm1EB0BkpyQzw/Mg+l4Moeiutdc0MW0zXeznneICw58tr+xHe13uFd7tmseXLDiW7Wlhevnjyfp8ghZQPQedowFZY7Y="
+      },
+      "s3": {
+        "s3SchemaVersion": "1.0",
+        "configurationId": "6b2089c8-fe68-44b8-ab8e-53d515f4b786",
+        "bucket": {
+          "name": "curso-ew-serverless-ederfmatos",
+          "ownerIdentity": {
+            "principalId": "A3PVNAL4X6UVVL"
+          },
+          "arn": "arn:aws:s3:::curso-ew-serverless-ederfmatos"
+        },
+        "object": {
+          "key": "test.csv",
+          "size": 12,
+          "eTag": "85126549273e2f07d3dc63523aad207f",
+          "sequencer": "0060D3A78BB584CC76"
+        }
+      }
+    }
+  ]
+}

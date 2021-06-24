@@ -1,0 +1,75 @@
+service: tooling-s3-sqs
+
+frameworkVersion: "2"
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  lambdaHashingVersion: 20201221
+  stage: ${opt:stage, "dev"}
+  environment:
+    BUCKET_NAME: curso-ew-serverless-ederfmatos
+    SQS_QUEUE: file-handler
+  iam:
+    role:
+      statements:
+        - Effect: "Allow"
+          Action:
+            - "sqs:SendMessage"
+            - "sqs:GetQueueUrl"
+            - "sqs:CreateQueue"
+            - "sqs:ReceiveMessage"
+          Resource: ${self:custom.sqsArn}
+
+        - Effect: "Allow"
+          Action:
+            - "s3:*"
+          Resource:
+            - arn:aws:s3:::${self:provider.environment.BUCKET_NAME}/*
+            - arn:aws:s3:::${self:provider.environment.BUCKET_NAME}
+
+plugins:
+  - serverless-localstack
+  - serverless-offline
+
+custom:
+  sqsArn:
+    Fn::GetAtt:
+      - SqsFileHandlerQueue
+      - Arn
+
+  localstack:
+    stages:
+      - local
+    autoStart: false # desabilitar o localstack quando fizer deploy
+  serverless-offline:
+    useChildProcesses: true
+
+package:
+  individually: true
+  excludeDevDependencies: true
+
+functions:
+  s3Listener:
+    handler: src/index.s3Listener
+    events:
+      - s3:
+          bucket: ${self:provider.environment.BUCKET_NAME}
+          event: s3:ObjectCreated:*
+          rules:
+            - suffix: .csv
+
+  sqsListener:
+    handler: src/index.sqsListener
+    events:
+      - sqs:
+          batchSize: 1
+          arn: ${self:custom.sqsArn}
+
+resources:
+  Resources:
+    SqsFileHandlerQueue:
+      Type: AWS::SQS::Queue
+      Properties:
+        QueueName: ${self:provider.environment.SQS_QUEUE}
+        VisibilityTimeout: 60
