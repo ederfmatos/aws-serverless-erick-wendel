@@ -1,0 +1,25 @@
+{
+  "name": "graphql-dynamodb-pt1",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "IS_LOCAL=true npx nodemon --exec sls offline start --host 0.0.0.0"
+  },
+  "ntl": {
+    "descriptions": {
+      "start": "Start project"
+    }
+  },
+  "devDependencies": {
+    "apollo-server-lambda": "^2.25.2",
+    "graphql": "^15.5.1",
+    "nodemon": "^2.0.7",
+    "serverless": "^2.48.0",
+    "serverless-dynamodb-local": "^0.2.39",
+    "serverless-offline": "^7.0.0"
+  },
+  "dependencies": {
+    "dynamoose": "^2.7.3"
+  }
+}
