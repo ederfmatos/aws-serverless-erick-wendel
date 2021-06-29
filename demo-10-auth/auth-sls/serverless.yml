@@ -1,0 +1,52 @@
+service: auth-sls
+
+frameworkVersion: "2"
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  lambdaHashingVersion: 20201221
+  environment:
+    JWT_KEY: ZUVkVlVHRk1NVGRsWlc4eFNEZDFUVUZHUm1wV1NrNTNVazFpZWtNeVdubEJTWEIzYldOTFJtczVaa2xqYldRd2IxWXdjSFoyYjBKVlRFRkZOVmM
+
+plugins:
+  - serverless-offline
+
+functions:
+  authorizer:
+    handler: src/authorizer.handler
+
+  login:
+    handler: src/login.handler
+    events:
+      - http:
+          path: /login
+          method: post
+          cors: true
+
+  heroes-public:
+    handler: src/getHeroes.public
+    events:
+      - http:
+          method: get
+          path: /public
+          cors:
+            origins:
+              - "*"
+            headers:
+              - Content-Type
+              - Authorization
+
+  heroes-private:
+    handler: src/getHeroes.private
+    events:
+      - http:
+          method: get
+          path: /private
+          authorizer: authorizer
+          cors:
+            origins:
+              - "*"
+            headers:
+              - Content-Type
+              - Authorization

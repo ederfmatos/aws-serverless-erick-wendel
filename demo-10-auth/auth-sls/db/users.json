@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Eder Matos",
+    "username": "ederfmatos",
+    "password": "12345678",
+    "scopes": ["heroes:list"]
+  },
+  {
+    "name": "Teste",
+    "username": "teste",
+    "password": "1234",
+    "scopes": []
+  },
+  {
+    "name": "Tevez",
+    "username": "tevez",
+    "password": "5432",
+    "scopes": ["user:create"]
+  }
+]

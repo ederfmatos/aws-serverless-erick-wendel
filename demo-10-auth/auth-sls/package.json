@@ -1,0 +1,17 @@
+{
+  "name": "auth-sls",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "IS_LOCAL=true npx nodemon --exec sls offline start --host 0.0.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.8",
+    "serverless": "^2.49.0",
+    "serverless-offline": "^7.0.0"
+  },
+  "dependencies": {
+    "jsonwebtoken": "^8.5.1"
+  }
+}
