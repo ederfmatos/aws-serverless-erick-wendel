@@ -1,0 +1,14 @@
+{
+  "name": "api-management",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "IS_LOCAL=true npx nodemon --exec sls offline start --host 0.0.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.9",
+    "serverless": "^2.50.0",
+    "serverless-offline": "^7.0.0"
+  }
+}
