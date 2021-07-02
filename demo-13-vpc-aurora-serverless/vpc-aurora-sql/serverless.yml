@@ -9,6 +9,27 @@ provider:
   name: aws
   runtime: nodejs12.x
   lambdaHashingVersion: 20201221
+  environment:
+    MYSQL_HOST: ${env:MYSQL_HOST, "serverlesscourse.cluster-cptytulkvaol.us-east-1.rds.amazonaws.com"}
+    MYSQL_USER: ${env:MYSQL_USER, "ederfmatos"}
+    MYSQL_PASSWORD: ${env:MYSQL_PASSWORD, "123456Abc"}
+    MYSQL_POST: ${env:MYSQL_POST, "3306"}
+    MYSQL_DATABASE: ${env:MYSQL_DATABASE, "heroes"}
+  vpc:
+    securityGroupIds:
+      - sg-9e0a8e93
+    subnetIds:
+      - subnet-1939a746
+      - subnet-cdd582c3
+      - subnet-87db7bb6
+      - subnet-f9bc219f
+      - subnet-63a8852e
+      - subnet-1a9f043b
+      - subnet-1939a746
+      - subnet-cdd582c3
+      - subnet-87db7bb6
+      - subnet-f9bc219f
+      - subnet-63a8852e
 
 package:
   excludeDevDependencies: true
