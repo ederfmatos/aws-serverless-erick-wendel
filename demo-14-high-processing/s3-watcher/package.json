@@ -1,0 +1,16 @@
+{
+  "name": "s3-watcher",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "invoke:local": "sls invoke local -f s3watcher --path mocks/event.json",
+    "logs": "sls logs -f s3watcher -t"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.943.0",
+    "env-var": "^7.0.1",
+    "serverless-pseudo-parameters": "^2.5.0"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "name": "env-manager",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "aws-sdk": "^2.943.0"
+  }
+}
